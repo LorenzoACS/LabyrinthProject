@@ -4,7 +4,7 @@ public class BackTrackLaby {
    public static int labRow = 0;
    public static int labCol = 0;
    public static boolean[][] alreadyBeenHere;
-   public ArrayList<int[]> solution = new ArrayList<int[]>();
+   public static ArrayList<int[]> solution = new ArrayList<int[]>();
    public static BackTrackLaby btl = new BackTrackLaby();
 
    public static void main(String[] args) {
