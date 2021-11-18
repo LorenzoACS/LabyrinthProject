@@ -51,7 +51,7 @@ public class BackTrackLaby {
                 }
                 count++; 
                 findSafeMove(row + x[0], col + x[1], l);
-                solution.remove(solution.size() - 1);
+                //solution.remove(solution.size() - 1);
                 //alreadyBeenHere[row + x[0]][col + x[1]] = false;
                 count--;
             }
