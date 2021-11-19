@@ -7,7 +7,7 @@ public class BackTrackLaby {
    public static int[][] solutionArray; 
    public static ArrayList<int[]> solution = new ArrayList<int[]>();
    public static BackTrackLaby btl = new BackTrackLaby();
-
+   public int count = 0;
    public static void main(String[] args) {
        int row = Integer.parseInt(args[0]);
        int col = Integer.parseInt(args[1]);
@@ -16,7 +16,6 @@ public class BackTrackLaby {
        Labyrinth l = new Labyrinth(labRow, labCol);
        alreadyBeenHere = new boolean[labRow][labCol];
        alreadyBeenHere[0][0] = true;
-       l.printGrid();
        System.out.println("\n" + l.solves(btl.solve(l)));
        l.printGrid();
     }
@@ -26,13 +25,17 @@ public class BackTrackLaby {
         solutionArray = solution.toArray(new int[solution.size()][2]);
         for (int i = 0; i < solution.size(); i++) {
             if (solution.get(i) == Labyrinth.UP) {
-                    System.out.println(0);
+                    System.out.println("Move " + count + ": " + 0 + ".");
+                    count++;
                 } else if (solution.get(i) == Labyrinth.DOWN) {
-                    System.out.println(1);
+                    System.out.println("Move " + count + ": " + 1 + ".");
+                    count++;
                 } else if (solution.get(i) == Labyrinth.LEFT) {
-                    System.out.println(2);
+                    System.out.println("Move " + count + ": " + 2 + ".");
+                    count++;
                 } else if (solution.get(i) == Labyrinth.RIGHT) {
-                    System.out.println(3);
+                    System.out.println("Move " + count + ": " + 3 + ".");
+                    count++;
                 }
         }
         return solutionArray;
@@ -49,12 +52,16 @@ public class BackTrackLaby {
         } 
         for (int[] x : new int[][] {Labyrinth.UP, Labyrinth.DOWN, Labyrinth.LEFT, Labyrinth.RIGHT}) {
             if (isASafeMove(row, col, x, l)) {
-                solution.add(x);
-                alreadyBeenHere[row + x[0]][col + x[1]] = true;
-                findSafeMove(row + x[0], col + x[1], l);
-                if (!alreadyBeenHere[labRow - 1][labCol - 1]) {
+                if (alreadyBeenHere[labRow - 1][labCol - 1]) {
+                    break;
+                } else {
+                    solution.add(x);
+                    alreadyBeenHere[row + x[0]][col + x[1]] = true;
+                    findSafeMove(row + x[0], col + x[1], l);
+                    if (!alreadyBeenHere[labRow - 1][labCol - 1]) {
                     solution.remove(solution.size() - 1);
                     alreadyBeenHere[row + x[0]][col + x[1]] = false;
+                    }
                 }
             }
         }
