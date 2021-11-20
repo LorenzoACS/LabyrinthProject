@@ -1,10 +1,12 @@
-import java.util.ArrayList;
 /*
 * Compile: javac BackTrackLaby.java
 * Run: java BackTrackLaby [row args] [col args]
 * Created by: Lorenzo Stiavelli
 * Last Edited: 11/19/21
 */
+
+// Import classes.
+import java.util.ArrayList;
 
 /**
 * This class contains all the variables, fields, and methods needed in order 
@@ -13,7 +15,6 @@ import java.util.ArrayList;
 * It also prints to the user if the maze was solved or not solved by the program.
 */
 public class BackTrackLaby {
-
    public static int labRow;
    public static int labCol;
    public static boolean[][] alreadyBeenHere;
@@ -21,6 +22,7 @@ public class BackTrackLaby {
    public static ArrayList<int[]> solution = new ArrayList<int[]>();
    public static BackTrackLaby btl = new BackTrackLaby();
    public int count = 0;
+   
    /** 
    * Main method which tells you if the code was able to solve the current maze being referenced. 
    * @param Takes in two args for the row and column of the @Labyrinth ( @labRow and @labCol ).
@@ -55,21 +57,22 @@ public class BackTrackLaby {
         solutionArray = solution.toArray(new int[solution.size()][2]);
         for (int i = 0; i < solution.size(); i++) {
             if (solution.get(i) == Labyrinth.UP) {
-                    System.out.println("Move " + count + ": " + 0 + ".");
-                    count++;
-                } else if (solution.get(i) == Labyrinth.DOWN) {
-                    System.out.println("Move " + count + ": " + 1 + ".");
-                    count++;
-                } else if (solution.get(i) == Labyrinth.LEFT) {
-                    System.out.println("Move " + count + ": " + 2 + ".");
-                    count++;
-                } else if (solution.get(i) == Labyrinth.RIGHT) {
-                    System.out.println("Move " + count + ": " + 3 + ".");
-                    count++;
-                }
+                System.out.println("Move " + count + ": " + 0 + ".");
+                count++;
+            } else if (solution.get(i) == Labyrinth.DOWN) {
+                System.out.println("Move " + count + ": " + 1 + ".");
+                count++;
+            } else if (solution.get(i) == Labyrinth.LEFT) {
+                System.out.println("Move " + count + ": " + 2 + ".");
+                count++;
+            } else if (solution.get(i) == Labyrinth.RIGHT) {
+                System.out.println("Move " + count + ": " + 3 + ".");
+                count++;
+            }
         }
         return solutionArray;
     }
+    
     /** 
     * Method which checks if a move is safe or not. Uses methods from
     * @Labyrinth class named @isStone and @isValid. 
