@@ -42,7 +42,7 @@ public class BackTrackLaby {
    /**
    * "count" is an int field used to keep track of the number of moves.
    */
-   public int count = 0;
+   public int count = 1;
    
    /** 
    * Main method which tells you if the code was able to solve the current maze being referenced. 
