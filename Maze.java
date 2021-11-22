@@ -16,7 +16,7 @@ public class Maze {
         
     }
     
-    public void lineOrientation() {
+    public void bisectDirection() {
         
     }
     
