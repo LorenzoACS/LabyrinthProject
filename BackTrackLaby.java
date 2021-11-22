@@ -60,9 +60,9 @@ public class BackTrackLaby {
        alreadyBeenHere[0][0] = true;
        // Checks if the solution solved it or not.
        if (l.solves(btl.solve(l))) {
-           System.out.println("The program was able to solve the maze.\n" + l.solves(btl.solve(l)));
+           System.out.println("The program was able to solve the maze.\n");
        } else {
-           System.out.println("The program was not able to solve the maze.\n" + l.solves(btl.solve(l)));
+           System.out.println("The program was not able to solve the maze.\n");
        }
        l.printGrid();
     }
