@@ -11,6 +11,7 @@ public class Maze {
     public int totalMoves = 1;
     public static int totalMovesOfMaze;
     public static boolean[][] boardOfMaze;
+    public static boolean noMove = false;
     public static void main(String[] args) {
         int row = Integer.parseInt(args[0]);
         int col = Integer.parseInt(args[1]);
@@ -18,6 +19,7 @@ public class Maze {
         mazeCol = col;
         totalMovesOfMaze = mazeRow * mazeCol;
         boardOfMaze = new boolean[mazeRow][mazeCol];
+        boardOfMaze[0][0] = true;
         maze.mazeMove(0, 0);
     }
     
@@ -42,50 +44,61 @@ public class Maze {
         }
         int randomDirectionChooser = (int) (Math.random() * 4);
         if (randomDirectionChooser == 0) {
-            System.out.print("Here" + "0" );
-            System.out.print(safeMove(row, col, randomDirectionChooser));
+            // System.out.print("Here" + "0" );
+            // System.out.print(safeMove(row, col, randomDirectionChooser));
+            noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
-                System.out.print(safeMove(row, col, randomDirectionChooser));
-                System.out.print("Before");
+                noMove = false;
+                // System.out.print(safeMove(row, col, randomDirectionChooser));
+                // System.out.print("Before");
                 makeMove(row, col, randomDirectionChooser);
                 mazeMove(row - 1, col);
-                System.out.print("After");
+                // System.out.print("After");
             }
         }
         if (randomDirectionChooser == 1) {
-            System.out.print("Here" + "1");
-            System.out.print(safeMove(row, col, randomDirectionChooser));
+            // System.out.print("Here" + "1");
+            // System.out.print(safeMove(row, col, randomDirectionChooser));
+            noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
+                noMove = false;
                 makeMove(row, col, randomDirectionChooser);
                 mazeMove(row + 1, col);
             }
         }
         if (randomDirectionChooser == 2) {
-            System.out.print("Here" + "2");
-            System.out.print(safeMove(row, col, randomDirectionChooser));
+            // System.out.print("Here" + "2");
+            // System.out.print(safeMove(row, col, randomDirectionChooser));
+            noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
+                noMove = false;
                 makeMove(row, col, randomDirectionChooser);
                 mazeMove(row, col - 1);
             }
         }
         if (randomDirectionChooser == 3) {
-            System.out.print("Here" + "3");
-            System.out.print(safeMove(row, col, randomDirectionChooser));
+            // System.out.print("Here" + "3");
+            // System.out.print(safeMove(row, col, randomDirectionChooser));
+            noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
+                noMove = false;
                 makeMove(row, col, randomDirectionChooser);
                 mazeMove(row, col + 1);
             }
         }
+        if (noMove) {
+            mazeMove(row, col);
+        }
     }
     
     public boolean safeMove(int row, int col, int direction) {
-        if (direction == 0 && totalMoves > 1 && totalMoves < totalMovesOfMaze) {
+        if (direction == 0 && totalMoves > 1 && totalMoves < totalMovesOfMaze && row >= 1) {
             return row - 1 >= 0 && row - 1 < mazeRow && col < mazeCol;
         }
         if (direction == 1) {
             return row + 1 < mazeRow && col < mazeCol;
         }
-        if (direction == 2 && totalMoves > 1 && totalMoves < totalMovesOfMaze) {
+        if (direction == 2 && totalMoves > 1 && totalMoves < totalMovesOfMaze && col >= 1) {
             return row < mazeRow && col >= 0 && col - 1 < mazeCol;
         }
         if (direction == 3) {
@@ -97,15 +110,19 @@ public class Maze {
     public void makeMove(int row, int col, int direction) {
         if (direction == 0 && totalMoves > 1 && totalMoves < totalMovesOfMaze) {
             boardOfMaze[row - 1][col] = true;
+            totalMoves++;
         }
         if (direction == 1) {
             boardOfMaze[row + 1][col] = true;
+            totalMoves++;
         }
         if (direction == 2 && totalMoves > 1 && totalMoves < totalMovesOfMaze) {
             boardOfMaze[row][col - 1] = true;
+            totalMoves++;
         }
         if (direction == 3) {
             boardOfMaze[row][col + 1] = true;
+            totalMoves++;
         } 
     }
 }
