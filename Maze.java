@@ -32,7 +32,7 @@ public class Maze {
     }
     
     public void mazeMove(int row, int col) {
-        if (boardOfMaze[row][col] == boardOfMaze[mazeRow - 1][mazeCol - 1] && row != 0 && col != 0 ) {
+        if (row == mazeRow - 1 && col == mazeCol - 1 && row != 0 && col != 0 ) {
             System.out.println("Random maze generation completed.");
             maze.createMaze();
             return;
