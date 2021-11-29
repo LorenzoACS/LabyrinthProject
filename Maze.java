@@ -1,17 +1,23 @@
-import java.util.Random;
+/*
+* Compile: javac Maze.java 
+* Run: java Maze args[0] args[1]
+* Created by: Lorenzo Stiavelli
+* Last Edited: 11/24/21
+*/
+
+/**
+*  
+*
+*/
 public class Maze {
     public static int mazeRow;
     public static int mazeCol;
     public static Maze maze = new Maze();
-    // public final int[] UP = {-1,0};
-    // public final int[] DOWN = {1,0};
-    // public final int[] LEFT = {0,-1};
-    // public final int[] RIGHT = {0,1};
-    // public int[][] allDirections;
     public int totalMoves = 1;
     public static int totalMovesOfMaze;
     public static boolean[][] boardOfMaze;
     public static boolean noMove = false;
+    
     public static void main(String[] args) {
         int row = Integer.parseInt(args[0]);
         int col = Integer.parseInt(args[1]);
@@ -37,28 +43,21 @@ public class Maze {
     }
     
     public void mazeMove(int row, int col) {
-        if (row == mazeRow - 1 && col == mazeCol - 1 && row != 0 && col != 0 ) {
+        if (row == mazeRow - 1 && col == mazeCol - 1 && row != 0 && col != 0) {
             System.out.println("Random maze generation completed.");
             maze.createMaze();
             return;
         }
         int randomDirectionChooser = (int) (Math.random() * 4);
         if (randomDirectionChooser == 0) {
-            // System.out.print("Here" + "0" );
-            // System.out.print(safeMove(row, col, randomDirectionChooser));
             noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
                 noMove = false;
-                // System.out.print(safeMove(row, col, randomDirectionChooser));
-                // System.out.print("Before");
                 makeMove(row, col, randomDirectionChooser);
                 mazeMove(row - 1, col);
-                // System.out.print("After");
             }
         }
         if (randomDirectionChooser == 1) {
-            // System.out.print("Here" + "1");
-            // System.out.print(safeMove(row, col, randomDirectionChooser));
             noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
                 noMove = false;
@@ -67,8 +66,6 @@ public class Maze {
             }
         }
         if (randomDirectionChooser == 2) {
-            // System.out.print("Here" + "2");
-            // System.out.print(safeMove(row, col, randomDirectionChooser));
             noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
                 noMove = false;
@@ -77,8 +74,6 @@ public class Maze {
             }
         }
         if (randomDirectionChooser == 3) {
-            // System.out.print("Here" + "3");
-            // System.out.print(safeMove(row, col, randomDirectionChooser));
             noMove = true;
             if (safeMove(row, col, randomDirectionChooser)) {
                 noMove = false;
