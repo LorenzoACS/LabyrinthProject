@@ -18,6 +18,7 @@ public class Maze {
     public static int totalMovesOfMaze;
     public static boolean[][] boardOfMaze;
     public static boolean noMove = false;
+    
     /**
     * This method gets the values of the row and column for the size of labyrinth/maze and 
     * the boolean 2-D array boardOfMaze.
@@ -34,6 +35,7 @@ public class Maze {
         boardOfMaze[0][0] = true;
         maze.mazeMove(0, 0);
     }
+    
     /**
     * This method creates the labyrinth/maze after mazeMove is finished 
     * setting each tile to either true or false for stone or lava.
@@ -50,6 +52,7 @@ public class Maze {
             System.out.println();
         }
     }
+    
     /**
     * This method is responsible for making the different directional moves
     * It goes through every possible move (up, down, left, right) and will
@@ -100,6 +103,7 @@ public class Maze {
             mazeMove(row, col);
         }
     }
+    
     /**
     * This method checks if a tile is safe or not. It checks if the next tile
     * is still on the board and does not exceed the total number of possible tiles.
@@ -123,6 +127,7 @@ public class Maze {
         } 
         return false; 
     }
+    
     /**
     * This method is actually responsible for making the tile/move after 
     * every check is passed/true. 
