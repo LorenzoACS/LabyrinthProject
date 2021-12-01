@@ -19,26 +19,32 @@ public class BackTrackLaby {
    * "labRow" is a static int field used for the size of row in the maze.
    */
    public static int labRow;
+   
    /**
    * "labCol" is a static int field used for the size of the column in the maze.
    */ 
    public static int labCol;
+   
    /**
    * "alreadyBeenHere" is a static 2-D boolean array used to keep track of visited squares.
    */
    public static boolean[][] alreadyBeenHere;
+   
    /**
    * "solutionArray" is a static 2-D int array used to keep track of the moves done.
    */
-   public static int[][] solutionArray; 
+   public static int[][] solutionArray;
+   
    /**
    * "solution" is a static arraylist used to get the correct solution from "solutionArray".
    */
    public static ArrayList<int[]> solution = new ArrayList<int[]>();
+   
    /**
    * "btl" is a "BackTrackLaby" class object used in calling methods.
    */
    public static BackTrackLaby btl = new BackTrackLaby();
+   
    /**
    * "count" is an int field used to keep track of the number of moves.
    */
