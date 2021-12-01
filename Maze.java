@@ -1,6 +1,6 @@
 /*
 * Compile: javac Maze.java 
-* Run: java Maze args[0] args[1]
+* Run: java Maze [row args] [col args]
 * Created by: Lorenzo Stiavelli
 * Last Edited: 11/24/21
 */
